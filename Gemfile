@@ -13,5 +13,8 @@ gem 'spring',        group: :development
 # use postgres
 gem 'pg'
 
-#use devise
+# use devise
 gem 'devise'
+
+# gtfs
+gem 'gtfs'
