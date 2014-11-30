@@ -1,0 +1,8 @@
+%h1 Information for Stop ##{@stop.id}
+
+%div
+  %h1 Routes
+
+  - @stop.trips.each do |trip|
+
+    = trip.direction_id
