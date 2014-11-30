@@ -49,7 +49,8 @@ end
 Route.delete_all
 gtfs_source.routes.each do |route|
 
-  Route.create({  agency_id: route.agency_id,
+  Route.create({  id: route.id,
+                  agency_id: route.agency_id,
                   short_name: route.short_name,
                   long_name: route.long_name,
                   route_type: route.type,
@@ -65,7 +66,8 @@ end
 Shape.delete_all
 gtfs_source.shapes.each do |shape|
 
-  Shape.create({  pt_lat: shape.pt_lat,
+  Shape.create({  shape_id: shape.id,
+                  pt_lat: shape.pt_lat,
                   pt_lon: shape.pt_lon,
                   pt_sequence: shape.pt_sequence,
                   dist_traveled: shape.dist_traveled })
@@ -113,7 +115,8 @@ end
 Trip.delete_all
 gtfs_source.trips.each do |trip|
 
-  Trip.create({ block_id: trip.block_id,
+  Trip.create({ id: trip.id,
+                block_id: trip.block_id,
                 route_id: trip.route_id,
                 direction_id: trip.direction_id,
                 shape_id: trip.shape_id,

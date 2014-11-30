@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 20141128185019) do
     t.string "desc"
   end
 
-  create_table "shapes", force: true do |t|
+  create_table "shapes", id: false, force: true do |t|
+    t.string "shape_id"
     t.string "pt_lat"
     t.string "pt_lon"
     t.string "pt_sequence"
