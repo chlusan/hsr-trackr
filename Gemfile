@@ -18,3 +18,6 @@ gem 'devise'
 
 # gtfs
 gem 'gtfs'
+
+# haml
+gem 'haml-rails'
