@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+  font-family: 'Helvetica Neue';
+  width: 60rem;
+  margin: auto;
+  font-size: 150%;
+}
+h1{
+  margin-bottom: 0;
+}
+.subtitle{
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 3px solid #000;
+  padding-bottom: 1em;
+}
+
+.departure a{
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.departure a:hover{
+  background: black;
+  color: white;
+}
+
+.departure .time{
+  font-weight: bold;
+}
+
+.comments{
+  margin-top: 1rem;
+}
+
+.comment h1{
+
+  font-size: 1em;
+}

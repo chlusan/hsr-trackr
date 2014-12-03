@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :stops, only: :show
 
+  resources :stop_times, only: :show
+
   root to: 'main#home'
   
 end

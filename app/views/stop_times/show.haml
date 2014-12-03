@@ -1,0 +1,26 @@
+%h1 #{@stop_time.trip.route.short_name} #{@stop_time.trip.route.long_name}
+.subtitle #{@stop_time.trip.headsign}
+
+.comments
+
+  - unless @comments.count > 0
+    
+    No comments found.
+
+  - @comments.each do |comment|
+
+    .comment
+
+      %h1 Comment by User ##{ comment.user.id }
+
+      %dl
+
+        %dt Capacity
+        %dd
+          - comment.capacity.to_i.times do
+            ★
+
+        %dt Driver Behaviour
+        %dd
+          - comment.driver.to_i.times do
+            ★

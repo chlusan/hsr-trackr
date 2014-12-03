@@ -1,8 +1,41 @@
-%h1 Information for Stop ##{@stop.id}
+%h1 Stop ##{@stop.code}
+.subtitle #{@stop.name}
 
 %div
-  %h1 Routes
 
-  - @stop.trips.each do |trip|
+  / debug: limit 10
+  - count = 0
 
-    = trip.direction_id
+  / debug: remove unique times
+  - time = Time.now
+
+  - @stop.stop_times.order(:departure_time).each do |stop_time|
+
+    - hour = stop_time.departure_time.split(/:/)[0].to_i
+    - min = stop_time.departure_time.split(/:/)[1].to_i
+    - sec = stop_time.departure_time.split(/:/)[2].to_i
+
+    - now = Time.now
+
+    / debug
+    - now = now.change( hour: 10, min: 10 )
+
+    / for demo purposes, limit hours to 9-12am
+    - if hour >= 9 && hour <= 12 && ( hour > now.hour || (hour == now.hour && min >= now.min) ) && hour <= ( now.change( hour: now.hour + 1 ).hour ) && count < 5
+
+      - departure_time = Time.new( now.year, now.month, now.day, hour, min, sec )
+
+      - if time.strftime('%I:%M') != departure_time.strftime('%I:%M')
+
+        - trip = stop_time.trip
+
+        .departure
+          = link_to '/stop_times/show?stop_id=' + @stop.id + '&trip_id=' + trip.id do
+            .time
+              #{distance_of_time_in_words( departure_time, now )} (#{departure_time.strftime('%I:%M')})
+            .name
+              #{trip.route.short_name} #{trip.route.long_name} #{trip.headsign}
+
+        - count += 1
+
+      - time = departure_time
